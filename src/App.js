@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Chart from './components/Chart';
+import TimeframeSelector from './components/TimeframeSelector';
+import './styles/Chart.css';
 
-function App() {
+const App = () => {
+  const [timeframe, setTimeframe] = useState('daily');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header>
+        <h1>My Chart App</h1>
       </header>
+      <main>
+        <TimeframeSelector onSelect={setTimeframe} />
+        <Chart timeframe={timeframe} />
+      </main>
+      <footer>
+        <p>© 2024 My Chart App. All rights reserved.</p>
+      </footer>
     </div>
   );
-}
+};
 
 export default App;
